@@ -3,10 +3,12 @@ import { useState } from 'react';
 const UseStateGotcha = () => {
   const [count, setCount] = useState(0);
   const increase = () => {
-    setCount(count + 1);
+    setCount((currentState) => {
+      const newState = currentState + 1;
+      return newState;
+    });
     console.log(count);
   };
-  console.log(count);
   return (
     <>
       <h2>useState "gotcha"</h2>
