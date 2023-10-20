@@ -4,14 +4,14 @@ import { data } from '../../../data';
 const UseStateArray = () => {
   const [people, setPeople] = useState(data);
 
-  console.log(people);
-
-  const removeSingleItem = (e) => {
-    console.log('single');
+  const removeSingleItem = (id) => {
+    const newArray = people.filter((item) => item.id !== id);
+    setPeople(newArray);
   };
+  console.log(useState(data));
 
-  const removeAllItems = (e) => {
-    console.log('all');
+  const removeAllItems = () => {
+    setPeople([]);
   };
 
   return (
@@ -21,7 +21,7 @@ const UseStateArray = () => {
         return (
           <div key={person.id}>
             <h2>{person.name}</h2>
-            <button type="button" onClick={removeSingleItem}>
+            <button type="button" onClick={() => removeSingleItem(person.id)}>
               remove
             </button>
           </div>
