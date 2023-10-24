@@ -1,5 +1,22 @@
+import { useEffect } from 'react';
+import { useState } from 'react';
+
 const CleanupFunction = () => {
-  return <h2>cleanup function</h2>;
+  const [value, setValue] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setValue(!value)}>click</button>
+      {value && <RandomComponent />}
+    </div>
+  );
+};
+
+const RandomComponent = () => {
+  useEffect(() => {
+    console.log('hmm, thats interesting');
+  }, []);
+  return <h1>hello mello</h1>;
 };
 
 export default CleanupFunction;
