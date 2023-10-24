@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 const CleanupFunction = () => {
   const [value, setValue] = useState(false);
+  console.log('render');
 
   return (
     <div>
@@ -14,7 +15,14 @@ const CleanupFunction = () => {
 
 const RandomComponent = () => {
   useEffect(() => {
-    console.log('hmm, thats interesting');
+    // console.log('hmm, thats interesting');
+    const intId = setInterval(() => {
+      // console.log('hello from interval');
+    }, 1000);
+    return () => {
+      clearInterval(intId);
+      console.log('cleanup');
+    };
   }, []);
   return <h1>hello mello</h1>;
 };
