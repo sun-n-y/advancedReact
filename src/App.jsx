@@ -1,11 +1,5 @@
-import Navbar from './tutorial/04-project-structure/starter/Navbar';
-
 function App() {
-  return (
-    <div className="container">
-      <Navbar />
-    </div>
-  );
+  return <div className="container"></div>;
 }
 
 export default App;
