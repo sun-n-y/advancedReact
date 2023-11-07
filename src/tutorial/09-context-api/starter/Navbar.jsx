@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 import NavLinks from './NavLinks';
+
+export const NavbarContext = createContext();
 
 const Navbar = () => {
   const [user, setUser] = useState({ name: 'sunny' });
@@ -7,10 +9,12 @@ const Navbar = () => {
     setUser(null);
   };
   return (
-    <nav className="navbar">
-      <h5>context api</h5>
-      <NavLinks logout={logout} user={user} />
-    </nav>
+    <NavbarContext.Provider value={{ user, logout }}>
+      <nav className="navbar">
+        <h5>context api</h5>
+        <NavLinks />
+      </nav>
+    </NavbarContext.Provider>
   );
 };
 export default Navbar;
