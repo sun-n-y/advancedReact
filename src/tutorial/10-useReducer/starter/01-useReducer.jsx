@@ -1,13 +1,20 @@
-import { useState, useReducer } from 'react';
+import { useReducer } from 'react';
 import { data } from '../../../data';
 
 // default state
 const defaultState = {
   people: data,
+  isLoading: false,
 };
 
 // reducer function
-const reducer = () => {};
+const reducer = (state, action) => {
+  if (action.type === 'CLEAR_LIST') {
+    return { ...state, people: [] };
+  }
+};
+
+//====================================================================
 
 const ReducerBasics = () => {
   // useReducer
@@ -19,14 +26,13 @@ const ReducerBasics = () => {
   };
 
   const clearList = () => {
+    dispatch({ type: 'CLEAR_LIST' });
     // setPeople([]);
   };
 
   const handleReset = () => {
     // setPeople(data);
   };
-
-  console.log(state);
 
   return (
     <div>
