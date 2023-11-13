@@ -7,19 +7,36 @@ const ReducerBasics = () => {
     let newPeople = people.filter((person) => person.id !== id);
     setPeople(newPeople);
   };
+
+  const handleReset = () => {
+    setPeople(data);
+  };
+
+  if (people.length < 1) {
+    return (
+      <button
+        className="btn"
+        style={{ marginTop: '2rem' }}
+        onClick={handleReset}
+      >
+        reset
+      </button>
+    );
+  }
+
   return (
     <div>
       {people.map((person) => {
         const { id, name } = person;
         return (
-          <div key={id} className='item'>
+          <div key={id} className="item">
             <h4>{name}</h4>
             <button onClick={() => removeItem(id)}>remove</button>
           </div>
         );
       })}
       <button
-        className='btn'
+        className="btn"
         style={{ marginTop: '2rem' }}
         onClick={() => setPeople([])}
       >
