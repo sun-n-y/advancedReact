@@ -8,21 +8,13 @@ const ReducerBasics = () => {
     setPeople(newPeople);
   };
 
+  const clearList = () => {
+    setPeople([]);
+  };
+
   const handleReset = () => {
     setPeople(data);
   };
-
-  if (people.length < 1) {
-    return (
-      <button
-        className="btn"
-        style={{ marginTop: '2rem' }}
-        onClick={handleReset}
-      >
-        reset
-      </button>
-    );
-  }
 
   return (
     <div>
@@ -35,13 +27,23 @@ const ReducerBasics = () => {
           </div>
         );
       })}
-      <button
-        className="btn"
-        style={{ marginTop: '2rem' }}
-        onClick={() => setPeople([])}
-      >
-        clear items
-      </button>
+      {people.length < 1 ? (
+        <button
+          className="btn"
+          style={{ marginTop: '2rem' }}
+          onClick={handleReset}
+        >
+          reset
+        </button>
+      ) : (
+        <button
+          className="btn"
+          style={{ marginTop: '2rem' }}
+          onClick={clearList}
+        >
+          clear items
+        </button>
+      )}
     </div>
   );
 };
